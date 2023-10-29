@@ -2,24 +2,27 @@
 -- Definición de la dimensión Desarrollador
 CREATE TABLE IF NOT EXISTS dimension_desarrollador (
     desarrollador_id SERIAL PRIMARY KEY,
-    nombre_desarrollador VARCHAR(255)
+    developer VARCHAR(255)
 );
 
 -- Definición de la dimensión Publicador
 CREATE TABLE IF NOT EXISTS dimension_publicador (
     publicador_id SERIAL PRIMARY KEY,
-    nombre_publicador VARCHAR(255)
+    publisher VARCHAR(255)
 );
 
 -- Definición de la dimensión Genero
 CREATE TABLE IF NOT EXISTS dimension_genero (
     genero_id SERIAL PRIMARY KEY,
-    nombre_genero VARCHAR(255)
+    genres VARCHAR(255)
 );
 -- Definición de la dimensión Juego
 CREATE TABLE IF NOT EXISTS dimension_juego (
     juego_id SERIAL PRIMARY KEY,
-    nombre VARCHAR(255),
+    name VARCHAR(255),
+    game_slug VARCHAR(255),
+    price FLOAT,
+    release_date VARCHAR(255),
     desarrollador_id INT,
     publicador_id INT,
     genero_id INT,
@@ -31,16 +34,14 @@ CREATE TABLE IF NOT EXISTS dimension_juego (
 -- Definición de la dimensión Compania del critico
 CREATE TABLE IF NOT EXISTS dimension_compania (
     compania_id SERIAL PRIMARY KEY,
-    nombre_compania VARCHAR(255)
+    company VARCHAR(255)
 );
 
 
 -- Definición de la dimensión Crítico
 CREATE TABLE IF NOT EXISTS dimension_critico (
     critico_id SERIAL PRIMARY KEY,
-    nombre_critico VARCHAR(255),
-    compania_critico VARCHAR(255)
-    score_rating FLOAT
+    author VARCHAR(255),
     FOREIGN KEY (compania_id) REFERENCES dimension_compania(compania_id)
 );
 
@@ -54,12 +55,15 @@ CREATE TABLE IF NOT EXISTS dimension_tiempo (
 
 -- Definición de la dimensión de hecho Rating
 CREATE TABLE IF NOT EXISTS dimension_hecho_rating (
-    juego_id SERIAL,
+    id SERIAL PRIMARY KEY,
+    juego_id INT,
+    genero_id INT,
+    publicador_id INT,
+    desarrollador_id INT,
     critico_id INT,
+    compania_id INT,
     tiempo_id INT,
-    rating_promedio_publicador FLOAT,
-    rating_promedio_desarrollador FLOAT,
-    rating_promedio_genero FLOAT,
+    score_rating FLOAT,
     FOREIGN KEY (juego_id) REFERENCES dimension_juego(juego_id),
     FOREIGN KEY (critico_id) REFERENCES dimension_critico(critico_id),
     FOREIGN KEY (tiempo_id) REFERENCES dimension_tiempo(tiempo_id)
