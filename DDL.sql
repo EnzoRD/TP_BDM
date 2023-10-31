@@ -56,7 +56,7 @@ CREATE TABLE IF NOT EXISTS dimension_tiempo (
 );
 
 -- Definición de la dimensión de hecho Rating
-CREATE TABLE IF NOT EXISTS dimension_hecho_rating (
+CREATE TABLE IF NOT EXISTS hecho_rating_juego (
     id SERIAL PRIMARY KEY,
     juego_id INT,
     critico_id INT,
@@ -66,7 +66,7 @@ CREATE TABLE IF NOT EXISTS dimension_hecho_rating (
     FOREIGN KEY (critico_id) REFERENCES dimension_critico(critico_id),
     FOREIGN KEY (tiempo_id) REFERENCES dimension_tiempo(tiempo_id)
 );
-CREATE TABLE IF NOT EXISTS dimension_hecho_rating_critico (
+CREATE TABLE IF NOT EXISTS hecho_rating_critico (
     id_rating_crit SERIAL PRIMARY KEY,
     critico_id INT,
     tiempo_id INT,
