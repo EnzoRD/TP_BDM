@@ -59,27 +59,18 @@ CREATE TABLE IF NOT EXISTS dimension_tiempo (
 CREATE TABLE IF NOT EXISTS dimension_hecho_rating (
     id SERIAL PRIMARY KEY,
     juego_id INT,
-    genero_id INT,
-    publicador_id INT,
-    desarrollador_id INT,
     critico_id INT,
-    compania_id INT,
     tiempo_id INT,
     score_rating FLOAT,
-    rating_promedio_por_critico FLOAT,
     FOREIGN KEY (juego_id) REFERENCES dimension_juego(juego_id),
     FOREIGN KEY (critico_id) REFERENCES dimension_critico(critico_id),
-    FOREIGN KEY (tiempo_id) REFERENCES dimension_tiempo(tiempo_id),
-    FOREIGN KEY (genero_id) REFERENCES dimension_genero(genero_id),
-    FOREIGN KEY (publicador_id) REFERENCES dimension_publicador(publicador_id),
-    FOREIGN KEY (desarrollador_id) REFERENCES dimension_desarrollador(desarrollador_id),
-    FOREIGN KEY (compania_id) REFERENCES dimension_compania(compania_id)
+    FOREIGN KEY (tiempo_id) REFERENCES dimension_tiempo(tiempo_id)
 );
 CREATE TABLE IF NOT EXISTS dimension_hecho_rating_critico (
     id_rating_crit SERIAL PRIMARY KEY,
     critico_id INT,
-	compania_id INT,
-    rating_promedio_por_critico FLOAT,
+    tiempo_id INT,
+    rating_promedio_diario FLOAT,
     FOREIGN KEY (critico_id) REFERENCES dimension_critico(critico_id),
-	FOREIGN KEY (compania_id) REFERENCES dimension_compania(compania_id)
+    FOREIGN KEY (tiempo_id) REFERENCES dimension_tiempo(tiempo_id)
 );
