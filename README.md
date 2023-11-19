@@ -40,7 +40,7 @@ Epic Games busca comprender las preferencias de los jugadores y la crítica espe
 
 ## Contacto
 
-- Nombre: Ruiz Diaz Enzo 
+- Nombre: [Ruiz Diaz Enzo](https://github.com/EnzoRD) 
 - Correo Electrónico: [enzoruizdiaz10@gmail.com]
 - Más formas de contacto en mi perfil.
 
@@ -87,7 +87,7 @@ Epic Games seeks to understand the preferences of gamers and critics in order to
 
 ## Contact
 
-- Name: Ruiz Diaz Enzo 
+- Name: [Ruiz Diaz Enzo](https://github.com/EnzoRD) 
 - Email: [enzoruizdiaz10@gmail.com]
 - More ways to contact me in my profile.
 
